@@ -1,6 +1,7 @@
 extends Node2D
 
-const CELLSIZE := 16
+const CELL_SIZE := 16
+const START_POS := 5
 var grid := []
 enum { YELLOW, ORANGE, RED, PURPLE, BLUE, TEAL, GREEN }
 const colors := [
@@ -14,41 +15,57 @@ const colors := [
 	]
 var tile := preload('res://src/Tile.tscn')
 
+onready var md_timer = $MoveDownTimer
+
 onready var x := XScene.new(self, false, {count_start = 0})
 
-const L := {
-	zero = [0, 1, 2, 3],
-	one = [],
-	two = [],
-	three = [],
-	color = TEAL,
+const shapes := {
+	L = {
+		rotations = [
+			[0, 1, 2, 3],
+			[0, 10, 20, 30],
+			[],
+			[],
+		],
+		color = TEAL,
+	},
+	T = {
+		rotations = [
+			[1, 10, 11, 12],
+			[],
+			[],
+			[],
+		],
+		color = PURPLE,
 	}
-const T := [1, 10, 11, 12]
+}
 
 var current := {
-	shape = [],
-	color = Color(),
-	}
+	shape = '',
+	positions = [],
+	rotation = 0,
+}
+
 var static_cells = {}
 
 func _ready():
+	md_timer.connect('timeout', self, 'move_down')
 	x.defaults.method_add = x.HIDDEN
 	var coords = make_coords(10,20)
 	for i in 200:
 		x.add_scene(tile)
 		x.x(i).position = coords[i]
 		
-	current.shape = L.zero.duplicate()
-	current.color = L.color
+	spawn('L')
+	move(Vector2(0,10))
 	make_static()
-	print(static_cells)
-	current.shape = L.zero.duplicate()
-	current.color = L.color
-	move(Vector2.DOWN)
+	spawn('L')
+
+	md_timer.start()
 
 func _process(delta):
 	x.remove_scenes(x.active, x.HIDDEN)
-	paint_shape(current.shape, current.color)
+	paint_current()
 	for i in static_cells:
 		paint(i, static_cells[i])
 
@@ -62,16 +79,35 @@ func _input(event):
 	if event.is_action_pressed('ui_up'):
 		move(Vector2.UP)
 
+func spawn(shape: String):
+	current.shape = shape
+	current.positions = []
+	for i in shapes[shape].rotations[0]:
+		current.positions.append(i + START_POS)
+
+func rotate():
+	positions = []
+	for i in 
+
+	for i in current.positions:
+		if collision(i, v):
+			return
 func make_static():
-	for i in current.shape:
-		static_cells[i] = current.color
+	for i in current.positions:
+		static_cells[i] = shapes[current.shape].color
 
 func move(v: Vector2):
-	for i in current.shape.size():
-		if collision(current.shape[i], v):
+	for i in current.positions:
+		if collision(i, v):
 			return
-	for i in current.shape.size():
-		current.shape[i] += v.x + v.y * 10
+	for i in current.positions.size():
+		current.positions[i] += v.x + v.y * 10
+
+func move_down():
+	move(Vector2.DOWN)
+
+# func rotation(rot: int):
+
 
 func collision(i: int, v: Vector2) -> bool:
 	var row = i / 10
@@ -83,16 +119,15 @@ func collision(i: int, v: Vector2) -> bool:
 	if v.y:
 		if (i + v.y * 10) / 10 >= 20:
 			return true
-
+	# static cells collision
 	if (i + v.x + v.y * 10) in static_cells.keys():
 		return true
 
-	print(static_cells)
 	return false
 
-func paint_shape(indices: Array, color: int):
-	for i in indices:
-		paint(i, color)
+func paint_current():
+	for i in current.positions:
+		paint(i, shapes[current.shape].color)
 
 func paint(index: int, color: int):
 	x.x(index).modulate = colors[color]
@@ -107,8 +142,8 @@ func make_coords(x_max: int, y_max: int):
 		var x = 0
 		for j in x_max:
 			coords.append(Vector2(x,y))
-			x += CELLSIZE
-		y += CELLSIZE
+			x += CELL_SIZE
+		y += CELL_SIZE
 
 	return coords
 

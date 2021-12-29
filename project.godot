@@ -29,6 +29,10 @@ config/icon="res://icon.png"
 InputHandler="*res://src/trash/InputHandler.gd"
 Library="*res://src/trash/Library.gd"
 
+[debug]
+
+settings/fps/force_fps=10
+
 [display]
 
 window/size/width=512
