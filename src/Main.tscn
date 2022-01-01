@@ -23,8 +23,10 @@ current = true
 [node name="Tetris" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
-[node name="NextShapeTimer" type="Timer" parent="Tetris"]
+[node name="StopShapeTimer" type="Timer" parent="Tetris"]
 
 [node name="MoveDownTimer" type="Timer" parent="Tetris"]
+
+[node name="Blink" type="Tween" parent="Tetris"]
 
 [node name="Cage" parent="." instance=ExtResource( 2 )]
