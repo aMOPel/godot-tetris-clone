@@ -1,5 +1,4 @@
 extends Sprite
-#
 # export var grid_pos: Vector2 setget set_grid_pos, get_grid_pos
 #
 # func get_grid_pos() -> Vector2:

@@ -9,12 +9,36 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Grid",
+"language": "GDScript",
+"path": "res://src/Grid.gd"
+}, {
+"base": "Node",
+"class": "Keep",
+"language": "GDScript",
+"path": "res://src/Keep.gd"
+}, {
+"base": "Node",
+"class": "Queue",
+"language": "GDScript",
+"path": "res://src/Queue.gd"
+}, {
+"base": "Reference",
+"class": "Tetromino",
+"language": "GDScript",
+"path": "res://src/Tetromino.gd"
+}, {
 "base": "Node",
 "class": "XScene",
 "language": "GDScript",
 "path": "res://addons/x_scene/x_scene.gd"
 } ]
 _global_script_class_icons={
+"Grid": "",
+"Keep": "",
+"Queue": "",
+"Tetromino": "",
 "XScene": ""
 }
 
@@ -26,8 +50,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-InputHandler="*res://src/trash/InputHandler.gd"
-Library="*res://src/trash/Library.gd"
+InputHandler="*res://src/InputHandler.gd"
+Constants="*res://src/Constants.gd"
 
 [debug]
 
@@ -36,7 +60,7 @@ settings/fps/force_fps=10
 [display]
 
 window/size/width=512
-window/size/height=384
+window/size/height=512
 
 [editor_plugins]
 
@@ -45,6 +69,7 @@ enabled=PoolStringArray( "res://addons/x_scene/plugin.cfg" )
 [global]
 
 physics=false
+res=false
 
 [input]
 
@@ -55,12 +80,17 @@ ui_rotate_cw={
 }
 ui_rotate_ccw={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 ui_drop={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_keep={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

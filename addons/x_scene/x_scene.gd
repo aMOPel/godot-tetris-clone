@@ -268,22 +268,22 @@ func show_scene(key = count, deferred := defaults.deferred) -> void:
 
 	match s.state:
 		ACTIVE:
-			print_debug(
-				(
-					"XScene.show_scene: scene already active, aborting "
-					+ key as String
-					+ " "
-					+ s.to_string()
-				)
-			)
+			# print_debug(
+			# 	(
+			# 		"XScene.show_scene: scene already active, aborting "
+			# 		+ key as String
+			# 		+ " "
+			# 	)
+			# 	, s
+			# )
 			return
 		HIDDEN:
 			if not s.scene is CanvasItem:
 				print_debug(
 					(
 						"XScene.show_scene: scene must inherit from CanvasItem to be hidden "
-						+ s.to_string()
 					)
+					, s
 				)
 				return
 			s.scene.show()
@@ -326,8 +326,8 @@ func remove_scene( key = count, method := defaults.method_remove, deferred := de
 				print_debug(
 					(
 						"XScene.remove_scene: scene must inherit from CanvasItem to be hidden "
-						+ s.to_string()
 					)
+					, s
 				)
 				return
 
@@ -533,7 +533,7 @@ func _on_node_added(node: Node) -> void:
 	if _adding_scene:
 		return
 	if node.get_parent() == root:
-		scenes[count] = {
+		scenes[node.name] = {
 			scene = node,
 			state = (
 				HIDDEN
@@ -542,7 +542,7 @@ func _on_node_added(node: Node) -> void:
 			)
 		}
 
-		count += 1
+		# count += 1
 
 
 # print debug information

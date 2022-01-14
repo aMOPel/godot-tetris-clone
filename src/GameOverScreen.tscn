@@ -1,0 +1,304 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Tile.tscn" type="PackedScene" id=1]
+
+[node name="Game_Over_Screen" type="Node2D"]
+
+[node name="G" type="Node2D" parent="."]
+position = Vector2( 80, 80 )
+
+[node name="Sprite2" parent="G" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.494118, 0, 1 )
+position = Vector2( -112, 64 )
+
+[node name="Sprite3" parent="G" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.494118, 0, 1 )
+position = Vector2( -128, 64 )
+
+[node name="Sprite4" parent="G" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.494118, 0, 1 )
+position = Vector2( -96, 48 )
+
+[node name="Sprite5" parent="G" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( -128, 48 )
+
+[node name="Sprite6" parent="G" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( -128, 32 )
+
+[node name="Sprite7" parent="G" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( -128, 16 )
+
+[node name="Sprite8" parent="G" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( -112, 16 )
+
+[node name="Sprite9" parent="G" instance=ExtResource( 1 )]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+position = Vector2( -96, 16 )
+
+[node name="Sprite10" parent="G" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.494118, 0, 1 )
+position = Vector2( 704, 112 )
+offset = Vector2( -800, -48 )
+
+[node name="A" type="Node2D" parent="."]
+position = Vector2( 80, 80 )
+
+[node name="Sprite11" parent="A" instance=ExtResource( 1 )]
+modulate = Color( 0.419608, 0, 0.92549, 1 )
+position = Vector2( -48, 48 )
+
+[node name="Sprite12" parent="A" instance=ExtResource( 1 )]
+modulate = Color( 0.419608, 0, 0.92549, 1 )
+position = Vector2( -64, 32 )
+
+[node name="Sprite13" parent="A" instance=ExtResource( 1 )]
+modulate = Color( 0.419608, 0, 0.92549, 1 )
+position = Vector2( -64, 48 )
+
+[node name="Sprite14" parent="A" instance=ExtResource( 1 )]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+position = Vector2( -48, 16 )
+
+[node name="Sprite15" parent="A" instance=ExtResource( 1 )]
+modulate = Color( 0.419608, 0, 0.92549, 1 )
+position = Vector2( -64, 64 )
+
+[node name="Sprite16" parent="A" instance=ExtResource( 1 )]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+position = Vector2( -32, 64 )
+
+[node name="Sprite17" parent="A" instance=ExtResource( 1 )]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+position = Vector2( -32, 48 )
+
+[node name="Sprite18" parent="A" instance=ExtResource( 1 )]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+position = Vector2( -32, 32 )
+
+[node name="M" type="Node2D" parent="."]
+position = Vector2( 80, 80 )
+
+[node name="Sprite19" parent="M" instance=ExtResource( 1 )]
+modulate = Color( 0.419608, 0, 0.92549, 1 )
+position = Vector2( 32, 48 )
+
+[node name="Sprite20" parent="M" instance=ExtResource( 1 )]
+modulate = Color( 0.419608, 0, 0.92549, 1 )
+position = Vector2( 32, 32 )
+
+[node name="Sprite21" parent="M" instance=ExtResource( 1 )]
+modulate = Color( 0.419608, 0, 0.92549, 1 )
+position = Vector2( 32, 16 )
+
+[node name="Sprite22" parent="M" instance=ExtResource( 1 )]
+modulate = Color( 0.419608, 0, 0.92549, 1 )
+position = Vector2( 16, 32 )
+
+[node name="Sprite23" parent="M" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.717647, 0.752941, 1 )
+position = Vector2( 0, 16 )
+
+[node name="Sprite24" parent="M" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.717647, 0.752941, 1 )
+position = Vector2( 0, 32 )
+
+[node name="Sprite25" parent="M" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.717647, 0.752941, 1 )
+position = Vector2( 0, 64 )
+
+[node name="Sprite26" parent="M" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.717647, 0.752941, 1 )
+position = Vector2( 0, 48 )
+
+[node name="Sprite27" parent="M" instance=ExtResource( 1 )]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+position = Vector2( 32, 64 )
+
+[node name="E" type="Node2D" parent="."]
+position = Vector2( 272, 80 )
+
+[node name="Sprite2" parent="E" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( -112, 64 )
+
+[node name="Sprite3" parent="E" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( -128, 64 )
+
+[node name="Sprite4" parent="E" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.72549, 0.113725, 1 )
+position = Vector2( -112, 32 )
+
+[node name="Sprite5" parent="E" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( -128, 48 )
+
+[node name="Sprite6" parent="E" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.72549, 0.113725, 1 )
+position = Vector2( -128, 32 )
+
+[node name="Sprite7" parent="E" instance=ExtResource( 1 )]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+position = Vector2( -128, 16 )
+
+[node name="Sprite8" parent="E" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.72549, 0.113725, 1 )
+position = Vector2( -112, 16 )
+
+[node name="Sprite9" parent="E" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.72549, 0.113725, 1 )
+position = Vector2( -96, 16 )
+
+[node name="Sprite10" parent="E" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( -96, 64 )
+
+[node name="O" type="Node2D" parent="."]
+position = Vector2( 80, 160 )
+
+[node name="Sprite11" parent="O" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.717647, 0.752941, 1 )
+position = Vector2( -96, 32 )
+
+[node name="Sprite2" parent="O" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.494118, 0, 1 )
+position = Vector2( -112, 64 )
+
+[node name="Sprite3" parent="O" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.494118, 0, 1 )
+position = Vector2( -128, 64 )
+
+[node name="Sprite4" parent="O" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.717647, 0.752941, 1 )
+position = Vector2( -96, 48 )
+
+[node name="Sprite5" parent="O" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.494118, 0, 1 )
+position = Vector2( -128, 48 )
+
+[node name="Sprite6" parent="O" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.494118, 0, 1 )
+position = Vector2( -128, 32 )
+
+[node name="Sprite7" parent="O" instance=ExtResource( 1 )]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+position = Vector2( -128, 16 )
+
+[node name="Sprite8" parent="O" instance=ExtResource( 1 )]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+position = Vector2( -112, 16 )
+
+[node name="Sprite9" parent="O" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.717647, 0.752941, 1 )
+position = Vector2( -96, 16 )
+
+[node name="Sprite10" parent="O" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.717647, 0.752941, 1 )
+position = Vector2( -96, 64 )
+
+[node name="V" type="Node2D" parent="."]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+position = Vector2( 80, 160 )
+
+[node name="Sprite11" parent="V" instance=ExtResource( 1 )]
+position = Vector2( -32, 16 )
+
+[node name="Sprite12" parent="V" instance=ExtResource( 1 )]
+position = Vector2( -64, 32 )
+
+[node name="Sprite13" parent="V" instance=ExtResource( 1 )]
+position = Vector2( -64, 48 )
+
+[node name="Sprite14" parent="V" instance=ExtResource( 1 )]
+position = Vector2( -64, 16 )
+
+[node name="Sprite15" parent="V" instance=ExtResource( 1 )]
+position = Vector2( -48, 64 )
+
+[node name="Sprite17" parent="V" instance=ExtResource( 1 )]
+position = Vector2( -32, 48 )
+
+[node name="Sprite18" parent="V" instance=ExtResource( 1 )]
+position = Vector2( -32, 32 )
+
+[node name="E3" type="Node2D" parent="."]
+position = Vector2( 80, 160 )
+
+[node name="Sprite19" parent="E3" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( 16, 64 )
+
+[node name="Sprite20" parent="E3" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.843137, 0, 1 )
+position = Vector2( 16, 32 )
+
+[node name="Sprite21" parent="E3" instance=ExtResource( 1 )]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+position = Vector2( 32, 16 )
+
+[node name="Sprite22" parent="E3" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.843137, 0, 1 )
+position = Vector2( 16, 16 )
+
+[node name="Sprite23" parent="E3" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.843137, 0, 1 )
+position = Vector2( 0, 16 )
+
+[node name="Sprite24" parent="E3" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.843137, 0, 1 )
+position = Vector2( 0, 32 )
+
+[node name="Sprite25" parent="E3" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( 0, 64 )
+
+[node name="Sprite26" parent="E3" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( 0, 48 )
+
+[node name="Sprite27" parent="E3" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( 32, 64 )
+
+[node name="R" type="Node2D" parent="."]
+position = Vector2( 272, 160 )
+
+[node name="Sprite2" parent="R" instance=ExtResource( 1 )]
+modulate = Color( 0.419608, 0, 0.92549, 1 )
+position = Vector2( -112, 48 )
+
+[node name="Sprite3" parent="R" instance=ExtResource( 1 )]
+modulate = Color( 0.419608, 0, 0.92549, 1 )
+position = Vector2( -128, 64 )
+
+[node name="Sprite4" parent="R" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( -96, 32 )
+
+[node name="Sprite5" parent="R" instance=ExtResource( 1 )]
+modulate = Color( 0.419608, 0, 0.92549, 1 )
+position = Vector2( -128, 48 )
+
+[node name="Sprite6" parent="R" instance=ExtResource( 1 )]
+modulate = Color( 0.419608, 0, 0.92549, 1 )
+position = Vector2( -128, 32 )
+
+[node name="Sprite7" parent="R" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( -128, 16 )
+
+[node name="Sprite8" parent="R" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( -112, 16 )
+
+[node name="Sprite9" parent="R" instance=ExtResource( 1 )]
+modulate = Color( 0.141176, 0.376471, 1, 1 )
+position = Vector2( -96, 16 )
+
+[node name="Sprite10" parent="R" instance=ExtResource( 1 )]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+position = Vector2( -96, 64 )
