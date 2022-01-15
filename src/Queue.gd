@@ -31,7 +31,8 @@ func _init(size: int):
 			Tetromino.new(
 				grid,
 				new_tet,
-				c.QUEUE[i].position + c.TETROMINOS[new_tet].queue_offset,
+				Vector2.ZERO,
+				c.QUEUE[i].index + c.TETROMINOS[new_tet].queue_offset,
 				1
 			)
 		)
@@ -46,7 +47,7 @@ func move_queue(current) -> void:
 		{
 			name = queue[0].name,
 			color = queue[0].color,
-			position = c.START_POS + c.TETROMINOS[queue[0].name].start_offset,
+			base_index = c.START_POS + c.TETROMINOS[queue[0].name].start_offset,
 			rotation = 0,
 		}
 	)
@@ -56,8 +57,8 @@ func move_queue(current) -> void:
 			{
 				name = queue[i + 1].name,
 				color = queue[i + 1].color,
-				position = (
-					c.QUEUE[i].position
+				base_index = (
+					c.QUEUE[i].index
 					+ c.TETROMINOS[queue[i + 1].name].queue_offset
 				),
 			}
@@ -68,7 +69,7 @@ func move_queue(current) -> void:
 		{
 			name = new_tet,
 			color = c.COLORS[c.TETROMINOS[new_tet].color],
-			position = c.QUEUE[queue.size() - 1].position + c.TETROMINOS[new_tet].queue_offset,
+			base_index = c.QUEUE[queue.size() - 1].index + c.TETROMINOS[new_tet].queue_offset,
 		}
 	)
 

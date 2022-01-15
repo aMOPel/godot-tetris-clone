@@ -25,17 +25,17 @@ func _init():
 	t.free()
 	CELL_X = cell_rect.position.x + cell_rect.size.x
 	CELL_Y = cell_rect.position.y + cell_rect.size.y
-	QUEUE_GRID_POS = Vector2(14 * CELL_X, 4 * CELL_Y)
-	KEEP_GRID_POS = Vector2(-8 * CELL_X, 6 * CELL_Y)
+	QUEUE_GRID_POS = Vector2(14 * CELL_X, 3 * CELL_Y)
+	KEEP_GRID_POS = Vector2(-8 * CELL_X, 5 * CELL_Y)
 	GAME_OVER_POSITION = Vector2(-8 * CELL_X, 0 * CELL_Y)
 
 
 const QUEUE_SIZE := 5
 const QUEUE_GRID_COLUMNS := 4
-const QUEUE_GRID_ROWS := 14
+const QUEUE_GRID_ROWS := 15
 
 const KEEP_GRID_COLUMNS := 4
-const KEEP_GRID_ROWS := 2
+const KEEP_GRID_ROWS := 3
 
 enum { YELLOW, ORANGE, RED, PURPLE, BLUE, TEAL, GREEN }
 const COLORS := [
@@ -85,7 +85,7 @@ const TETROMINOS := {
 		],
 		color = TEAL,
 		start_offset = 0,
-		queue_offset = 0,
+		queue_offset = 1 * QUEUE_GRID_COLUMNS,
 	},
 	O = {
 		rotations = [
@@ -108,7 +108,7 @@ const TETROMINOS := {
 		],
 		color = YELLOW,
 		start_offset = 2 * COLUMNS + 1,
-		queue_offset = 0 * QUEUE_GRID_COLUMNS + 1,
+		queue_offset = 1 * QUEUE_GRID_COLUMNS + 1,
 	},
 	T = {
 		rotations = [
@@ -135,7 +135,7 @@ const TETROMINOS := {
 		],
 		color = PURPLE,
 		start_offset = 1 * COLUMNS,
-		queue_offset = -1 * QUEUE_GRID_COLUMNS,
+		queue_offset = 0 * QUEUE_GRID_COLUMNS,
 	},
 	L = {
 		rotations = [
@@ -162,7 +162,7 @@ const TETROMINOS := {
 		],
 		color = ORANGE,
 		start_offset = 1 * COLUMNS,
-		queue_offset = -1 * QUEUE_GRID_COLUMNS,
+		queue_offset = 0 * QUEUE_GRID_COLUMNS,
 	},
 	J = {
 		rotations = [
@@ -189,7 +189,7 @@ const TETROMINOS := {
 		],
 		color = BLUE,
 		start_offset = 1 * COLUMNS,
-		queue_offset = -1 * QUEUE_GRID_COLUMNS,
+		queue_offset = 0 * QUEUE_GRID_COLUMNS,
 	},
 	Z = {
 		rotations = [
@@ -216,7 +216,7 @@ const TETROMINOS := {
 		],
 		color = RED,
 		start_offset = 1 * COLUMNS,
-		queue_offset = -1 * QUEUE_GRID_COLUMNS,
+		queue_offset = 0 * QUEUE_GRID_COLUMNS,
 	},
 	S = {
 		rotations = [
@@ -243,25 +243,25 @@ const TETROMINOS := {
 		],
 		color = GREEN,
 		start_offset = 1 * COLUMNS,
-		queue_offset = -1 * QUEUE_GRID_COLUMNS,
+		queue_offset = 0 * QUEUE_GRID_COLUMNS,
 	},
 }
 
 const QUEUE := [
 	{
-		position = 0 * QUEUE_GRID_COLUMNS,
+		index = 0 * QUEUE_GRID_COLUMNS,
 	},
 	{
-		position = 3 * QUEUE_GRID_COLUMNS,
+		index = 3 * QUEUE_GRID_COLUMNS,
 	},
 	{
-		position = 6 * QUEUE_GRID_COLUMNS,
+		index = 6 * QUEUE_GRID_COLUMNS,
 	},
 	{
-		position = 9 * QUEUE_GRID_COLUMNS,
+		index = 9 * QUEUE_GRID_COLUMNS,
 	},
 	{
-		position = 12 * QUEUE_GRID_COLUMNS,
+		index = 12 * QUEUE_GRID_COLUMNS,
 	},
 ]
 

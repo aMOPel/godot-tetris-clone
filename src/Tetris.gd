@@ -1,5 +1,7 @@
 extends Node2D
 
+# BUG: color from blinking gets put into kept tile and sometimes kept tile color is weird
+# FIXED: exchanging current with kept next to edge wraps tiles
 # FIXED: tile stuck on left or right cage when moving it too quickly to one side
 
 # DONE: ghost tile
@@ -13,14 +15,13 @@ extends Node2D
 # DONE: tile forecast
 # DONE: keep tile
 # DONE: blinking when on the floor
+# DONE: score
+# DONE: simple exit game functionality
 
-# DOING: score
+# DOING: redo game over screen with grid and tetro classes from script
 
-# BUG: color from blinking gets put into kept tile and sometimes kept tile color is weird
-# BUG: exchanging current with kept next to edge wraps tiles
 # TODO: making collision more friendly / bumping away from walls
 # TODO: super rotations system
-# TODO: redo game over screen with grid and tetro classes from script
 # TODO: better randomness, no tile should appear too rarely
 # TODO: gradually increasing move down speed
 # TODO: better drop
@@ -258,8 +259,7 @@ func _on_new_static() -> void:
 
 func _on_row_completed(completed_rows: Array, with_tetromino: Tetromino) -> void:
 	var score_addition = calculate_score(completed_rows, with_tetromino)
-	print(score_addition)
-	assert(score_addition != -1, 'calculate_score error')
+	# assert(score_addition != -1, 'calculate_score error')
 	self.score += score_addition
 
 

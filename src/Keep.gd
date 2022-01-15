@@ -16,7 +16,7 @@ func _init():
 	)
 	add_child(keep_grid)
 	keep_grid.position = c.KEEP_GRID_POS
-	kept = Tetromino.new(keep_grid, '', 0, 1)
+	kept = Tetromino.new(keep_grid, '', Vector2.ZERO, 0, 1)
 
 
 func _process(delta):
@@ -48,7 +48,7 @@ func keep(current: Tetromino, extra_collision = null) -> bool:
 	kept.bulk_set(
 		{
 			name = new_kept_name,
-			position = c.TETROMINOS[new_kept_name].queue_offset,
+			base_index = c.TETROMINOS[new_kept_name].queue_offset,
 			color = new_kept_color,
 		}
 	)
