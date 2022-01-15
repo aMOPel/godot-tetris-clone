@@ -1,6 +1,6 @@
 class_name Tetromino
 
-var c := Constants
+var c = Constants
 
 var grid: Grid setget _set_grid
 var name: String setget _set_name
@@ -69,10 +69,10 @@ func update_current_indices() -> void:
 	indices = get_indices()
 
 
-func get_indices(v := Vector2.ZERO, _rotation := rotation) -> Array:
+func get_indices(v := Vector2.ZERO, _rotation := rotation, _name := name) -> Array:
 	var indices = []
 	var i = 0
-	for row in c.TETROMINOS[name].rotations[_rotation]:
+	for row in c.TETROMINOS[_name].rotations[_rotation]:
 		var j = 0
 		for cell in row:
 			if cell:
@@ -95,3 +95,69 @@ func copy_from(tetromino: Tetromino, recalculate_indices:= true) -> void:
 	rotation = tetromino.rotation
 	if recalculate_indices:
 		emit_signal('moved')
+
+
+
+func move(v: Vector2, extra_collision = null) -> bool:
+	if collision(v):
+		return false
+	if extra_collision is FuncRef:
+		if extra_collision.call_func(v):
+			return false
+	self.position += v.x + v.y * c.COLUMNS
+	return true
+
+
+func rotete(dir := 1, extra_collision = null) -> bool:
+	var next_rotation = rotation + dir
+	var max_rotations = c.TETROMINOS[name].rotations.size()
+
+	if next_rotation == max_rotations:
+		next_rotation = 0
+	if next_rotation < 0:
+		next_rotation = max_rotations - 1
+
+	if collision(Vector2.ZERO, next_rotation):
+		return false
+	if extra_collision is FuncRef:
+		if extra_collision.call_func(Vector2.ZERO, next_rotation):
+			return false
+
+	self.rotation = next_rotation
+	return true
+
+
+func collision(v := Vector2.ZERO, next_rotation := rotation, next_name := name) -> bool:
+	var next_indices = get_indices(v, next_rotation, next_name)
+
+	# special case for I because it can wrap if vertical
+	if name == 'I':
+		for i in next_indices.size():
+			if v.x:
+				if (
+					grid.x.x(indices[i]).row
+					!= grid.x.x(next_indices[i]).row
+				):
+					return true
+
+	var col_first = false
+	var col_last = false
+	for i in next_indices:
+		# floor collision
+		if i >= grid.size:
+			return true
+
+		# no wrapping
+		var column = grid.x.x(i).column
+
+		if column == 0:
+			col_first = true
+		elif column == grid.column_max - 1:
+			col_last = true
+
+		if col_first && col_last:
+			return true
+
+	return false
+
+

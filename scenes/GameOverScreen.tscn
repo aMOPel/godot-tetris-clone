@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/Tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/GameOverScreen.gd" type="Script" id=2]
 
 [node name="Game_Over_Screen" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="G" type="Node2D" parent="."]
 position = Vector2( 80, 80 )
@@ -45,6 +47,7 @@ position = Vector2( 704, 112 )
 offset = Vector2( -800, -48 )
 
 [node name="A" type="Node2D" parent="."]
+visible = false
 position = Vector2( 80, 80 )
 
 [node name="Sprite11" parent="A" instance=ExtResource( 1 )]
@@ -80,6 +83,7 @@ modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
 position = Vector2( -32, 32 )
 
 [node name="M" type="Node2D" parent="."]
+visible = false
 position = Vector2( 80, 80 )
 
 [node name="Sprite19" parent="M" instance=ExtResource( 1 )]
@@ -119,6 +123,7 @@ modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
 position = Vector2( 32, 64 )
 
 [node name="E" type="Node2D" parent="."]
+visible = false
 position = Vector2( 272, 80 )
 
 [node name="Sprite2" parent="E" instance=ExtResource( 1 )]
@@ -158,6 +163,7 @@ modulate = Color( 0.141176, 0.376471, 1, 1 )
 position = Vector2( -96, 64 )
 
 [node name="O" type="Node2D" parent="."]
+visible = false
 position = Vector2( 80, 160 )
 
 [node name="Sprite11" parent="O" instance=ExtResource( 1 )]
@@ -201,6 +207,7 @@ modulate = Color( 0, 0.717647, 0.752941, 1 )
 position = Vector2( -96, 64 )
 
 [node name="V" type="Node2D" parent="."]
+visible = false
 modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
 position = Vector2( 80, 160 )
 
@@ -226,6 +233,7 @@ position = Vector2( -32, 48 )
 position = Vector2( -32, 32 )
 
 [node name="E3" type="Node2D" parent="."]
+visible = false
 position = Vector2( 80, 160 )
 
 [node name="Sprite19" parent="E3" instance=ExtResource( 1 )]
@@ -265,6 +273,7 @@ modulate = Color( 0.141176, 0.376471, 1, 1 )
 position = Vector2( 32, 64 )
 
 [node name="R" type="Node2D" parent="."]
+visible = false
 position = Vector2( 272, 160 )
 
 [node name="Sprite2" parent="R" instance=ExtResource( 1 )]

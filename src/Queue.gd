@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 class_name Queue
 
@@ -41,7 +41,7 @@ func _process(delta):
 	for i in queue:
 		get_parent().paint_tetromino(i)
 
-func move_queue(current: Tetromino) -> void:
+func move_queue(current) -> void:
 	current.bulk_set(
 		{
 			name = queue[0].name,

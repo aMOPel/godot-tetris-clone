@@ -4,7 +4,7 @@ onready var x := XScene.new(self, true, {count_start = 0})
 onready var score = get_node('UI/Score')
 onready var tetris = $Tetris
 
-var gos = preload('GameOverScreen.tscn')
+var gos = preload('res://scenes/GameOverScreen.tscn')
 
 
 func _ready():

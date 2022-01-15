@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 class_name Keep
 
@@ -25,10 +25,17 @@ func _process(delta):
 		get_parent().paint_tetromino(kept)
 
 
-func keep(current: Tetromino) -> void:
+func keep(current: Tetromino, extra_collision = null) -> bool:
 	var new_kept_name = current.name
 	var new_kept_color = current.color
+
+
 	if kept.name:
+		if current.collision(Vector2.ZERO, current.rotation, kept.name):
+			return false
+		if extra_collision is FuncRef:
+			if extra_collision.call_func(Vector2.ZERO, current.rotation, kept.name):
+				return false
 		current.bulk_set(
 			{
 				name = kept.name,
@@ -37,6 +44,7 @@ func keep(current: Tetromino) -> void:
 		)
 	else:
 		get_parent().spawn()
+
 	kept.bulk_set(
 		{
 			name = new_kept_name,
@@ -45,3 +53,4 @@ func keep(current: Tetromino) -> void:
 		}
 	)
 	emit_signal('kept')
+	return true

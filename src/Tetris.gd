@@ -16,6 +16,10 @@ extends Node2D
 
 # DOING: score
 
+# BUG: color from blinking gets put into kept tile and sometimes kept tile color is weird
+# BUG: exchanging current with kept next to edge wraps tiles
+# TODO: making collision more friendly / bumping away from walls
+# TODO: super rotations system
 # TODO: redo game over screen with grid and tetro classes from script
 # TODO: better randomness, no tile should appear too rarely
 # TODO: gradually increasing move down speed
@@ -29,7 +33,7 @@ extends Node2D
 onready var md_timer = $MoveDownTimer
 onready var blink = $Blink
 
-var c := Constants
+var c = Constants
 var queue: Queue
 var keep: Keep
 var tetris_grid: Grid
@@ -100,7 +104,7 @@ func _input(event):
 
 func get_current_lowest_possible_position() -> int:
 	for i in tetris_grid.row_max + 1:
-		if collision(Vector2(0, i)):
+		if static_collision(Vector2(0, i)) or current.collision(Vector2(0, i)):
 			return i
 	return 0
 
@@ -155,12 +159,7 @@ func spawn() -> void:
 
 
 func move(v: Vector2) -> bool:
-	var indices = current.indices
-	for i in indices:
-		if collision(v):
-			return false
-	current.position += v.x + v.y * c.COLUMNS
-	return true
+	return current.move(v, funcref(self, 'static_collision'))
 
 
 func move_down() -> void:
@@ -168,19 +167,8 @@ func move_down() -> void:
 		emit_signal('bottom_reached')
 
 
-func rotete(dir := 1) -> void:
-	if current.name == 'O':
-		return
-	var next_rotation = current.rotation + dir
-	if next_rotation == 4:
-		next_rotation = 0
-	if next_rotation == -1:
-		next_rotation = 3
-
-	if collision(Vector2.ZERO, next_rotation):
-		return
-
-	current.rotation = next_rotation
+func rotete(dir := 1) -> bool:
+	return current.rotete(dir, funcref(self, 'static_collision'))
 
 
 func drop() -> void:
@@ -189,41 +177,10 @@ func drop() -> void:
 	emit_signal('dropped', current)
 
 
-func collision(v := Vector2.ZERO, next_rotation := current.rotation) -> bool:
-	var next_indices = current.get_indices(v, next_rotation)
+func static_collision(v := Vector2.ZERO, next_rotation := current.rotation, next_name := current.name) -> bool:
+	var next_indices = current.get_indices(v, next_rotation, next_name)
 
-	# special case for I because it can wrap if vertical
-	if current.name == 'I':
-		for i in next_indices.size():
-			if v.x:
-				var current_cell = current.indices[i]
-				var next_cell = next_indices[i]
-
-				if (
-					tetris_grid.x.x(current_cell).row
-					!= tetris_grid.x.x(next_cell).row
-				):
-					return true
-
-	var col_first = false
-	var col_last = false
 	for i in next_indices:
-		# floor collision
-		if i >= tetris_grid.size:
-			return true
-
-		# no wrapping
-		var column = tetris_grid.x.x(i).column
-
-		if column == 0:
-			col_first = true
-		elif column == tetris_grid.column_max - 1:
-			col_last = true
-
-		if col_first && col_last:
-			return true
-
-		# static cells collision
 		if i in static_cells.keys():
 			return true
 
@@ -359,7 +316,7 @@ onready var CONTROLS := {
 		ui_keep = {
 			object = keep,
 			functions = ['keep'],
-			arguments = [current],
+			arguments = [current, funcref(self, 'static_collision')],
 			hold_enabled = false,
 		},
 	},

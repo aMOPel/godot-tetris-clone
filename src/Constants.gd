@@ -5,15 +5,18 @@ const SETTINGS = {
 	MD_WAIT_TIME_START = 0.5,
 }
 
-const TILE = preload('res://src/Tile.tscn')
+const TILE = preload('res://scenes/Tile.tscn')
 
 const ROWS := 20
 const ROWS_ABOVE := 4
 const COLUMNS := 10
 const START_POS := 3
 
-var CELL_X
-var CELL_Y
+var CELL_X: int
+var CELL_Y: int
+var QUEUE_GRID_POS: Vector2
+var KEEP_GRID_POS: Vector2
+var GAME_OVER_POSITION: Vector2
 
 
 func _init():
@@ -22,14 +25,15 @@ func _init():
 	t.free()
 	CELL_X = cell_rect.position.x + cell_rect.size.x
 	CELL_Y = cell_rect.position.y + cell_rect.size.y
+	QUEUE_GRID_POS = Vector2(14 * CELL_X, 4 * CELL_Y)
+	KEEP_GRID_POS = Vector2(-8 * CELL_X, 6 * CELL_Y)
+	GAME_OVER_POSITION = Vector2(-8 * CELL_X, 0 * CELL_Y)
 
 
 const QUEUE_SIZE := 5
-const QUEUE_GRID_POS := Vector2(14 * 16, 4 * 16)
 const QUEUE_GRID_COLUMNS := 4
 const QUEUE_GRID_ROWS := 14
 
-const KEEP_GRID_POS := Vector2(-8 * 16, 6 * 16)
 const KEEP_GRID_COLUMNS := 4
 const KEEP_GRID_ROWS := 2
 
@@ -279,3 +283,6 @@ const SCORE_DATA = [
 		score = 1000,
 	},
 ]
+
+const GAME_OVER_COLUMNS = 24
+const GAME_OVER_ROWS = 16
